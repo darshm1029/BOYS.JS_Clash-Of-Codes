@@ -8,50 +8,26 @@ const cardData = [
   {
     id: 1,
     delay: 0,
-    img: require("./../../assets/images/1.jpg"),
+    img: require("./../../assets/images/FD.png"),
     alt: "Image 1",
-    name: "Naruto",
-    desc: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat.",
+    name: "Face Verification",
+    desc: "Face verification compares two faces to determine if they match",
   },
   {
     id: 2,
     delay: 200,
-    img: require("./../../assets/images/2.jpg"),
+    img: require("./../../assets/images/attribute.jpg"),
     alt: "Image 2",
-    name: "Baki",
-    desc: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat.",
+    name: "Face Recognition",
+    desc: "To perform face recognition, the task is to find a face in a database and verify it multiple times  ",
   },
   {
     id: 3,
     delay: 400,
-    img: require("./../../assets/images/3.jpg"),
+    img: require("./../../assets/images/recog.png"),
     alt: "Image 3",
-    name: "Death Note",
-    desc: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat.",
-  },
-  {
-    id: 4,
-    delay: 0,
-    img: require("./../../assets/images/4.jpg"),
-    alt: "Image 4",
-    name: "Attack of Titan",
-    desc: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat.",
-  },
-  {
-    id: 5,
-    delay: 200,
-    img: require("./../../assets/images/5.jpg"),
-    alt: "Image 5",
-    name: "Haikyu",
-    desc: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat.",
-  },
-  {
-    id: 6,
-    delay: 400,
-    img: require("./../../assets/images/6.jpg"),
-    alt: "Image 6",
-    name: "Dragon Ball Z",
-    desc: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat.",
+    name: "Facial and Real-Time Attribute Analysis ",
+    desc: "Facial attribute analysis describes visual properties of face images",
   },
 ];
 
@@ -94,9 +70,9 @@ const FeaturesTiles = ({
   );
 
   const sectionHeader = {
-    title: "Unlimited animes at a click",
+    title: "OUR SOLUTIONS",
     paragraph:
-      "Synergyze is the home of amazing original animes that you can't find anywhere else. Watch animes which are all tailored specifically to you.",
+      "Synergyze is the most lightweight and easy solution for your business.",
   };
 
   return (

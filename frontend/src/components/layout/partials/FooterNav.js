@@ -22,10 +22,7 @@ const FooterNav = ({
           <Link to="/privacy">Privacy</Link>
         </li>
         <li>
-          <Link to="/">About</Link>
-        </li>
-        <li>
-          <Link to="/pricing">Pricing</Link>
+          <Link to="/documentation">Documentation</Link>
         </li>
       </ul>
     </nav>

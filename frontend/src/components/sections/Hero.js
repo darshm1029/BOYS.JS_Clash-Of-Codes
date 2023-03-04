@@ -53,14 +53,14 @@ const Hero = ({
 
   return (
     <section {...props} className={outerClasses}>
-      <div className="container-sm">
+      <div className="container">
         <div
           className={innerClasses}
           style={{
             display: "flex",
             flexDirection: "row",
-            justifyContent: "space-between",
-            paddingLeft: "10%",
+            justifyContent: "space-evenly",
+            paddingLeft: "0%",
           }}
         >
           <div className="hero-content"
@@ -85,7 +85,7 @@ const Hero = ({
                 Recognize People The Way You Want
               </p>
               <p className="text-color-primary">
-                Integrate Face Recognition via our cloud API, or host Kairos on
+                Integrate Face Recognition via our cloud API, or host Synergyze on
                 your own servers for ultimate control of data, security, and
                 privacy—start creating safer, more accessible customer
                 experiences today.
@@ -94,7 +94,7 @@ const Hero = ({
                 <p>Leading Edge AI · 99.9% Accuracy · Built for Global Scale</p>
                 <ButtonGroup>
                   <Button tag="a" color="primary" wideMobile href="">
-                    <Link to="/">Join Now</Link>
+                    <Link to="/">API Documentation</Link>
                   </Button>
                 </ButtonGroup>
               </div>
