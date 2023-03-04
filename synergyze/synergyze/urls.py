@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from ML.views import get_prediction
+from ML.views import get_prediction, get_gender
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('predict/', get_prediction)
+    path('predict/', get_prediction),
+    path('gender/',get_gender)
 ]
