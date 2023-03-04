@@ -90,7 +90,12 @@ const Header = ({
 
   return (
     <header {...props} className={classes}>
-      <div className="container">
+      <div className="container" style={{
+        width: '100%',
+        maxWidth: '100%',
+        paddingLeft: '11%',
+        paddingRight: '10%',
+      }}>
         <div
           className={classNames(
             "site-header-inner",

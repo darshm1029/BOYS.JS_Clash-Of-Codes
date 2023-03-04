@@ -60,7 +60,7 @@ const Hero = ({
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
-            paddingLeft: "5%",
+            paddingLeft: "10%",
           }}
         >
           <div className="hero-content"
@@ -78,6 +78,9 @@ const Hero = ({
               <p
                 className="m-0 mb-32 reveal-from-bottom"
                 data-reveal-delay="400"
+                style={{
+                  fontSize: "1.5rem",
+                }}
               >
                 Recognize People The Way You Want
               </p>
