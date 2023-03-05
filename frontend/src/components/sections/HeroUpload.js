@@ -49,6 +49,7 @@ const HeroUpload = ({
   const [data, setData] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [output, setOutput] = useState(null);
 
   const handleMethod = (e) => {
     setMethod(e.target.value);
@@ -125,6 +126,7 @@ const HeroUpload = ({
           formData
         );
         console.log(result);
+        setOutput(JSON.stringify(result.data));
       } else if (imageUrl) {
         console.log(imageUrl);
         const result = await axios.post(
@@ -352,8 +354,9 @@ const HeroUpload = ({
           <div className="hero-figure reveal-from-bottom illustration-element-01">
             <TextField
               id="outlined-multiline-static"
-              label="Result"
+              placeholder="Result in JSON Format"
               multiline
+              value={output}
               rows={4}
               variant="outlined"
               fullWidth

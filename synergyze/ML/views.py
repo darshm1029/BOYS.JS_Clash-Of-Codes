@@ -5,7 +5,12 @@ from django.http import JsonResponse
 from deepface import DeepFace
 
 # from .models import Img
-from .serializers import ImgSerializer, VerifySerializer, UrlSerializer
+from .serializers import (
+    ImgSerializer,
+    VerifySerializer,
+    UrlSerializer,
+    VerifyUrlSerializer,
+)
 
 # from rest_framework.response import Response
 # from rest_framework import status
@@ -131,7 +136,7 @@ def verify(request):
 
 
 @csrf_exempt
-# @swagger_auto_schema(methods=["post"], request_body=UrlSerializer)
+@swagger_auto_schema(methods=["post"], request_body=VerifyUrlSerializer)
 @api_view(["POST"])
 def verify_by_url(request):
     img1 = request.data.get("image1")

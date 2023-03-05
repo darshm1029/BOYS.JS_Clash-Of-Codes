@@ -12,3 +12,8 @@ class VerifySerializer(serializers.Serializer):
 
 class UrlSerializer(serializers.Serializer):
     image = serializers.URLField()
+
+
+class VerifyUrlSerializer(serializers.Serializer):
+    image1 = serializers.URLField()
+    image2 = serializers.URLField()
