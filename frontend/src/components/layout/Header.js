@@ -136,6 +136,11 @@ const Header = ({
                         Documentation
                       </Link>
                     </li>
+                    <li>
+                      <Link to="/upload" onClick={closeMenu}>
+                        Upload
+                      </Link>
+                    </li>
                   </ul>
                 </div>
               </nav>

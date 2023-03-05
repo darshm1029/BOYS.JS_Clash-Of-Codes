@@ -4,7 +4,7 @@ import { SectionProps } from "../../utils/SectionProps";
 import ButtonGroup from "../elements/ButtonGroup";
 import { Link } from "react-router-dom";
 import ai from "../../assets/images/ai.gif";
-import { Box, Button } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { CloudUpload } from "@mui/icons-material";
 import Radio from "../elements/Radio";
@@ -127,10 +127,10 @@ const HeroUpload = ({
       } else if (imageUrl) {
         console.log(imageUrl);
         const result = await axios.post(
-            "http://127.0.0.1:8000/v1/" + data.url,
-            {
-                image_url: imageUrl,
-            }
+          "http://127.0.0.1:8000/v1/" + data.url,
+          {
+            image_url: imageUrl,
+          }
         );
         console.log(result);
       }
@@ -311,6 +311,20 @@ const HeroUpload = ({
               );
             })}
           </div>
+        </div>
+        <div className="hero-figure reveal-from-bottom illustration-element-01">
+          <TextField
+            id="outlined-multiline-static"
+            label="Result"
+            multiline
+            rows={4}
+            variant="outlined"
+            fullWidth
+            style={{ marginTop: "10px", backgroundColor: "white" }}
+            InputProps={{
+              readOnly: true,
+            }}
+          />
         </div>
       </div>
     </section>
