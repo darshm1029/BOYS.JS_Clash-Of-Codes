@@ -1,0 +1,292 @@
+{
+	"info": {
+		"_postman_id": "929380b2-ae37-43fe-ab25-cdca2280f062",
+		"name": "API COC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "24922709"
+	},
+	"item": [
+		{
+			"name": "Predict by image",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/deadp/Downloads/darsh.jpeg"
+						}
+					]
+				},
+				"url": "http://127.0.0.1:8000/predict/"
+			},
+			"response": []
+		},
+		{
+			"name": "Emotion by url",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"value": "https://i.cbc.ca/1.4693389.1528302660!/fileImage/httpImage/image.JPG_gen/derivatives/16x9_780/joey-bose.JPG",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://127.0.0.1:8000/v1/emotion/"
+			},
+			"response": []
+		},
+		{
+			"name": "Predict by url",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"value": "https://i.cbc.ca/1.4693389.1528302660!/fileImage/httpImage/image.JPG_gen/derivatives/16x9_780/joey-bose.JPG",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://127.0.0.1:8000/v1/predict/"
+			},
+			"response": []
+		},
+		{
+			"name": "PredictAll by image",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/deadp/Downloads/sahil.png"
+						}
+					]
+				},
+				"url": "http://127.0.0.1:8000/all/"
+			},
+			"response": []
+		},
+		{
+			"name": "Race by image",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/deadp/Downloads/sahil.png"
+						}
+					]
+				},
+				"url": "http://127.0.0.1:8000/race/"
+			},
+			"response": []
+		},
+		{
+			"name": "Emotion by image",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/deadp/Downloads/sahil.png"
+						}
+					]
+				},
+				"url": "http://127.0.0.1:8000/emotion/"
+			},
+			"response": []
+		},
+		{
+			"name": "Verify by image",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image1",
+							"type": "file",
+							"src": "/C:/Users/deadp/Downloads/darsh.jpeg"
+						},
+						{
+							"key": "image2",
+							"type": "file",
+							"src": "/C:/Users/deadp/Downloads/sahil.png"
+						}
+					]
+				},
+				"url": "http://127.0.0.1:8000/verify/"
+			},
+			"response": []
+		},
+		{
+			"name": "Age by image",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/deadp/Downloads/sahil.png"
+						}
+					]
+				},
+				"url": "http://127.0.0.1:8000/age/"
+			},
+			"response": []
+		},
+		{
+			"name": "Gender by image",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "image",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/deadp/Downloads/darsh.jpeg"
+						}
+					]
+				},
+				"url": "http://127.0.0.1:8000/gender/"
+			},
+			"response": []
+		},
+		{
+			"name": "PredictAll by url",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"value": "https://i.cbc.ca/1.4693389.1528302660!/fileImage/httpImage/image.JPG_gen/derivatives/16x9_780/joey-bose.JPG",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://127.0.0.1:8000/v1/all/"
+			},
+			"response": []
+		},
+		{
+			"name": "Race by url",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"value": "https://i.cbc.ca/1.4693389.1528302660!/fileImage/httpImage/image.JPG_gen/derivatives/16x9_780/joey-bose.JPG",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://127.0.0.1:8000/v1/race/"
+			},
+			"response": []
+		},
+		{
+			"name": "Age by url",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"value": "https://i.cbc.ca/1.4693389.1528302660!/fileImage/httpImage/image.JPG_gen/derivatives/16x9_780/joey-bose.JPG",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://127.0.0.1:8000/v1/age/"
+			},
+			"response": []
+		},
+		{
+			"name": "Gender by url",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"value": "https://i.cbc.ca/1.4693389.1528302660!/fileImage/httpImage/image.JPG_gen/derivatives/16x9_780/joey-bose.JPG",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://127.0.0.1:8000/v1/gender/"
+			},
+			"response": []
+		},
+		{
+			"name": "Verify by url",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image1",
+							"value": "https://i.cbc.ca/1.4693389.1528302660!/fileImage/httpImage/image.JPG_gen/derivatives/16x9_780/joey-bose.JPG",
+							"type": "text"
+						},
+						{
+							"key": "image2",
+							"value": "https://i.cbc.ca/1.4693389.1528302660!/fileImage/httpImage/image.JPG_gen/derivatives/16x9_780/joey-bose.JPG",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://127.0.0.1:8000/v1/verify/"
+			},
+			"response": []
+		}
+	]
+}

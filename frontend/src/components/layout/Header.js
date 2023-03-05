@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 import Logo from "./partials/Logo";
-import {useLocation} from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 
 const propTypes = {
   navPosition: PropTypes.string,
@@ -34,26 +34,25 @@ const Header = ({
 
   const nav = useRef(null);
   const hamburger = useRef(null);
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const location = useLocation();
 
   useEffect(() => {
     isActive && openMenu();
     document.addEventListener("keydown", keyPress);
     document.addEventListener("click", clickOutside);
-        setUser(JSON.parse(localStorage.getItem('profile')));
+    setUser(JSON.parse(localStorage.getItem("profile")));
     return () => {
       document.removeEventListener("keydown", keyPress);
       document.removeEventListener("click", clickOutside);
       closeMenu();
     };
-    
-  },[location]);
+  }, [location]);
 
-  const handleLogout=()=>{
-    localStorage.removeItem('profile');
+  const handleLogout = () => {
+    localStorage.removeItem("profile");
     setUser(null);
-  }
+  };
 
   const openMenu = () => {
     document.body.classList.add("off-nav-is-active");
@@ -88,14 +87,29 @@ const Header = ({
     className
   );
 
+  const onButtonClick = () => {
+    fetch("../../assets/postman/api.json").then((response) => {
+      response.blob().then((blob) => {
+        const fileURL = window.URL.createObjectURL(blob);
+        let alink = document.createElement("a");
+        alink.href = fileURL;
+        alink.download = "api.json";
+        alink.click();
+      });
+    });
+  };
+
   return (
     <header {...props} className={classes}>
-      <div className="container" style={{
-        width: '100%',
-        maxWidth: '100%',
-        paddingLeft: '11%',
-        paddingRight: '10%',
-      }}>
+      <div
+        className="container"
+        style={{
+          width: "100%",
+          maxWidth: "100%",
+          paddingLeft: "11%",
+          paddingRight: "10%",
+        }}
+      >
         <div
           className={classNames(
             "site-header-inner",
@@ -132,7 +146,10 @@ const Header = ({
                       </Link>
                     </li>
                     <li>
-                    <a href="http://127.0.0.1:8000/playground/" target="_blank">
+                      <a
+                        href="http://127.0.0.1:8000/playground/"
+                        target="_blank"
+                      >
                         Documentation
                       </a>
                     </li>
@@ -140,6 +157,9 @@ const Header = ({
                       <Link to="/upload" onClick={closeMenu}>
                         Upload
                       </Link>
+                    </li>
+                    <li>
+                      <button onClick={onButtonClick} style={{backgroundColor:"#4048d2",color:'white',padding:2,paddingLeft:10,paddingRight:10}}>Postman</button>
                     </li>
                   </ul>
                 </div>
