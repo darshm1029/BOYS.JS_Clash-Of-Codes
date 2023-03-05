@@ -132,9 +132,9 @@ const Header = ({
                       </Link>
                     </li>
                     <li>
-                      <Link to="/documentation" onClick={closeMenu}>
+                    <a href="http://127.0.0.1:8000/playground/" target="_blank">
                         Documentation
-                      </Link>
+                      </a>
                     </li>
                     <li>
                       <Link to="/upload" onClick={closeMenu}>
