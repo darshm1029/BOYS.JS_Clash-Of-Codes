@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { SectionProps } from "../../utils/SectionProps";
 import ButtonGroup from "../elements/ButtonGroup";
 import { Link } from "react-router-dom";
-import ai from "../../assets/images/ai.gif";
+import ai from "../../assets/images/load.gif";
 import { Box, Button, TextField } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { CloudUpload } from "@mui/icons-material";
@@ -48,7 +48,7 @@ const HeroUpload = ({
   const [method, setMethod] = useState(null);
   const [data, setData] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const handleMethod = (e) => {
     setMethod(e.target.value);
@@ -112,8 +112,8 @@ const HeroUpload = ({
     setImage(e.target.files[0]);
     setUrl(URL.createObjectURL(e.target.files[0]));
   };
-  console.log(image);
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     try {
       if (image) {
@@ -135,8 +135,10 @@ const HeroUpload = ({
         );
         console.log(result);
       }
+      setLoading(false);
     } catch (err) {
       console.log(err);
+      setLoading(false);
     }
   };
 
@@ -153,12 +155,14 @@ const HeroUpload = ({
   return (
     <section {...props} className={outerClasses}>
       <div className="container">
-        {loading ? (
+        {loading && (
           <div
             style={{
               width: "100%",
               height: "100%",
-              position: "absolute",
+              position: "fixed",
+              top: "0",
+              left: "0",
               background: "rgba(0,0,0,0.5),",
               backgroundImage: `url(${ai})`,
               zIndex: "1",
@@ -166,195 +170,200 @@ const HeroUpload = ({
               backgroundRepeat: "no-repeat",
               display: "flex",
               justifyContent: "center",
+              alignItems: "center",
+              opacity: "0.9",
             }}
           ></div>
-        ) : (
-          <>
+        )}
+        <div
+          style={{
+            opacity: loading ? 0.3 : 1,
+          }}
+        >
+          <div
+            className={innerClasses}
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-evenly",
+              paddingLeft: "0%",
+            }}
+          >
             <div
-              className={innerClasses}
+              className="hero-content"
               style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-evenly",
-                paddingLeft: "0%",
+                textAlign: "left",
               }}
             >
-              <div
-                className="hero-content"
-                style={{
-                  textAlign: "left",
-                }}
+              <h1
+                className="mt-0 mb-16 reveal-from-bottom"
+                data-reveal-delay="200"
               >
-                <h1
-                  className="mt-0 mb-16 reveal-from-bottom"
-                  data-reveal-delay="200"
+                <span className="text-color-primary">Synergyze</span>
+              </h1>
+              <div className="container-xs">
+                <p
+                  className="m-0 mb-32 reveal-from-bottom"
+                  data-reveal-delay="400"
+                  style={{
+                    fontSize: "1.5rem",
+                  }}
                 >
-                  <span className="text-color-primary">Synergyze</span>
-                </h1>
-                <div className="container-xs">
-                  <p
-                    className="m-0 mb-32 reveal-from-bottom"
-                    data-reveal-delay="400"
-                    style={{
-                      fontSize: "1.5rem",
-                    }}
-                  >
-                    Try It Yourself
-                  </p>
-                  <p className="text-color-primary">
-                    Upload Your Image and Check for the things you want to check
-                  </p>
-                  {data && (
-                    <>
-                      <p
-                        className="text-color-primary"
-                        style={{ marginBottom: 0 }}
-                      >
-                        URL : {data.url ? data.url : "No URL Available"}
-                      </p>
-                      <p
-                        className="text-color-primary"
-                        style={{ marginBottom: 0 }}
-                      >
-                        Method : {data.method}
-                      </p>
+                  Try It Yourself
+                </p>
+                <p className="text-color-primary">
+                  Upload Your Image and Check for the things you want to check
+                </p>
+                {data && (
+                  <>
+                    <p
+                      className="text-color-primary"
+                      style={{ marginBottom: 0 }}
+                    >
+                      URL : {data.url ? data.url : "No URL Available"}
+                    </p>
+                    <p
+                      className="text-color-primary"
+                      style={{ marginBottom: 0 }}
+                    >
+                      Method : {data.method}
+                    </p>
 
-                      <p>{data.desc}</p>
-                    </>
-                  )}
-                  <div className="reveal-from-bottom" data-reveal-delay="600">
-                    <form onSubmit={handleSubmit}>
+                    <p>{data.desc}</p>
+                  </>
+                )}
+                <div className="reveal-from-bottom" data-reveal-delay="600">
+                  <form onSubmit={handleSubmit}>
+                    <Box
+                      sx={{
+                        mt: 2,
+                        mb: 2,
+                      }}
+                    >
                       <Box
                         sx={{
-                          mt: 2,
-                          mb: 2,
+                          width: "100%",
+                          mr: { sm: 1 },
+                          border: "1px solid lightgrey",
+                          borderRadius: "5px",
                         }}
                       >
-                        <Box
-                          sx={{
-                            width: "100%",
-                            mr: { sm: 1 },
-                            border: "1px solid lightgrey",
-                            borderRadius: "5px",
-                          }}
-                        >
-                          {url ? (
-                            <img
-                              width="100%"
-                              src={url}
-                              style={{ borderRadius: "5px" }}
-                            />
-                          ) : (
-                            <div
+                        {url ? (
+                          <img
+                            width="100%"
+                            src={url}
+                            style={{ borderRadius: "5px" }}
+                          />
+                        ) : (
+                          <div
+                            style={{
+                              height: "200px",
+                              alignItems: "center",
+                              display: "flex",
+                              justifyContent: "center",
+                              flexDirection: "column",
+                            }}
+                          >
+                            <Button
+                              fullWidth
+                              component="label"
                               style={{
-                                height: "200px",
-                                alignItems: "center",
+                                height: "37px",
+                                marginTop: "10px",
                                 display: "flex",
                                 justifyContent: "center",
                                 flexDirection: "column",
                               }}
+                              value={image}
+                              onChange={(e) => handleImageFile(e)}
                             >
-                              <Button
-                                fullWidth
-                                component="label"
+                              <CloudUpload
                                 style={{
-                                  height: "37px",
-                                  marginTop: "10px",
-                                  display: "flex",
-                                  justifyContent: "center",
-                                  flexDirection: "column",
+                                  fontSize: "100px",
+                                  color: "#4048d2",
                                 }}
-                                value={image}
-                                onChange={(e) => handleImageFile(e)}
-                              >
-                                <CloudUpload
-                                  style={{
-                                    fontSize: "100px",
-                                    color: "#4048d2",
-                                  }}
-                                />
-                                Upload Image
-                                <input hidden accept="image/*" type="file" />
-                              </Button>
-                            </div>
-                          )}
-                        </Box>
-                        <div style={{ display: "flex", alignItems: "center" }}>
-                          <h3 className="mt-16 mb-16 reveal-from-bottom">
-                            <span className="text-color-primary">OR</span>
-                          </h3>
-                        </div>
-                        <input
-                          variant="outlined"
-                          fullWidth
-                          component="label"
-                          style={{ height: "37px", width: "100%" }}
-                          type="text"
-                          name="imageUrl"
-                          placeholder="Enter Image URL"
-                          onChange={(e) => handleImageUrl(e)}
-                        />
+                              />
+                              Upload Image
+                              <input hidden accept="image/*" type="file" />
+                            </Button>
+                          </div>
+                        )}
                       </Box>
-                      <Button
-                        type="submit"
-                        variant="contained"
+                      <div style={{ display: "flex", alignItems: "center" }}>
+                        <h3 className="mt-16 mb-16 reveal-from-bottom">
+                          <span className="text-color-primary">OR</span>
+                        </h3>
+                      </div>
+                      <input
+                        variant="outlined"
                         fullWidth
-                        style={{
-                          height: "37px",
-                          marginTop: "10px",
-                          backgroundColor: "#4048d2",
-                        }}
-                      >
-                        Submit
-                      </Button>
-                    </form>
-                  </div>
+                        component="label"
+                        style={{ height: "37px", width: "100%" }}
+                        type="text"
+                        name="imageUrl"
+                        placeholder="Enter Image URL"
+                        onChange={(e) => handleImageUrl(e)}
+                      />
+                    </Box>
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      fullWidth
+                      style={{
+                        height: "37px",
+                        marginTop: "10px",
+                        backgroundColor: "#4048d2",
+                      }}
+                    >
+                      Submit
+                    </Button>
+                  </form>
                 </div>
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  width: "45%",
-                }}
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "45%",
+              }}
+            >
+              <h3
+                className="mt-0 mb-16 reveal-from-bottom"
+                data-reveal-delay="200"
               >
-                <h3
-                  className="mt-0 mb-16 reveal-from-bottom"
-                  data-reveal-delay="200"
-                >
-                  <span className="text-color-primary">Select Method</span>
-                </h3>
-                {apiName.map((item, index) => {
-                  return (
-                    <Radio
-                      value={index}
-                      onChange={handleMethod}
-                      checked={method == index}
-                      label={item}
-                      name={item}
-                    />
-                  );
-                })}
-              </div>
+                <span className="text-color-primary">Select Method</span>
+              </h3>
+              {apiName.map((item, index) => {
+                return (
+                  <Radio
+                    value={index}
+                    onChange={handleMethod}
+                    checked={method == index}
+                    label={item}
+                    name={item}
+                  />
+                );
+              })}
             </div>
-            <div className="hero-figure reveal-from-bottom illustration-element-01">
-              <TextField
-                id="outlined-multiline-static"
-                label="Result"
-                multiline
-                rows={4}
-                variant="outlined"
-                fullWidth
-                style={{ marginTop: "10px", backgroundColor: "white" }}
-                InputProps={{
-                  readOnly: true,
-                }}
-              />
-            </div>
-          </>
-        )}
+          </div>
+          <div className="hero-figure reveal-from-bottom illustration-element-01">
+            <TextField
+              id="outlined-multiline-static"
+              label="Result"
+              multiline
+              rows={4}
+              variant="outlined"
+              fullWidth
+              style={{ marginTop: "10px", backgroundColor: "white" }}
+              InputProps={{
+                readOnly: true,
+              }}
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
