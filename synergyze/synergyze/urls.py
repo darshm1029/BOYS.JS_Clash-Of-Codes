@@ -23,6 +23,11 @@ from ML.views import (
     get_emotion,
     get_race,
     get_all,
+    get_prediction_by_url,
+    get_age_by_url,
+    get_emotion_by_url,
+    get_gender_by_url,
+    get_race_by_url,
 )
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
@@ -50,6 +55,11 @@ urlpatterns = [
     path("emotion/", get_emotion),
     path("race/", get_race),
     path("all/", get_all),
+    path("v1/predict/", get_prediction_by_url),
+    path("v1/age/", get_age_by_url),
+    path("v1/emotion/", get_emotion_by_url),
+    path("v1/gender/", get_gender_by_url),
+    path("v1/race/", get_race_by_url),
     # path('photos/', PhotoList.as_view()),
     re_path(
         r"^playground/$",

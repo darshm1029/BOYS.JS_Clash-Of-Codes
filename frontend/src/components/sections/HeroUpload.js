@@ -101,10 +101,10 @@ const HeroUpload = ({
       const formData = new FormData();
       formData.append("image", image);
         const result = await axios.post(
-          "http://192.168.43.147:8000/emotion/",
+          "http://127.0.0.1:8000/emotion/",
           formData
         );
-        console.log(data);
+        console.log(result);
       //   setPrediction(data.Prediction);
     } catch (err) {
       console.log(err);
