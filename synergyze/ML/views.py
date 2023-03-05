@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from deepface import DeepFace
 
 # from .models import Img
-from .serializers import ImgSerializer, VerifySerializer
+from .serializers import ImgSerializer, VerifySerializer, UrlSerializer
 
 # from rest_framework.response import Response
 # from rest_framework import status
@@ -40,6 +40,7 @@ def get_prediction(request):
 
 
 @csrf_exempt
+@swagger_auto_schema(methods=["post"], request_body=UrlSerializer)
 @api_view(["POST"])
 def get_prediction_by_url(request):
     img = request.data.get("image")
@@ -86,6 +87,7 @@ def get_gender(request):
 
 
 @csrf_exempt
+@swagger_auto_schema(methods=["post"], request_body=UrlSerializer)
 @api_view(["POST"])
 def get_gender_by_url(request):
     img = request.data.get("image")
@@ -129,6 +131,7 @@ def verify(request):
 
 
 @csrf_exempt
+# @swagger_auto_schema(methods=["post"], request_body=UrlSerializer)
 @api_view(["POST"])
 def verify_by_url(request):
     img1 = request.data.get("image1")
@@ -172,6 +175,7 @@ def get_age(request):
 
 
 @csrf_exempt
+@swagger_auto_schema(methods=["post"], request_body=UrlSerializer)
 @api_view(["POST"])
 def get_age_by_url(request):
     img = request.data.get("image")
@@ -218,6 +222,7 @@ def get_emotion(request):
 
 
 @csrf_exempt
+@swagger_auto_schema(methods=["post"], request_body=UrlSerializer)
 @api_view(["POST"])
 def get_emotion_by_url(request):
     img = request.data.get("image")
@@ -264,6 +269,7 @@ def get_race(request):
 
 
 @csrf_exempt
+@swagger_auto_schema(methods=["post"], request_body=UrlSerializer)
 @api_view(["POST"])
 def get_race_by_url(request):
     img = request.data.get("image")
@@ -319,6 +325,7 @@ def get_all(request):
 
 
 @csrf_exempt
+@swagger_auto_schema(methods=["post"], request_body=UrlSerializer)
 @api_view(["POST"])
 def get_all_by_url(request):
     img = request.data.get("image")

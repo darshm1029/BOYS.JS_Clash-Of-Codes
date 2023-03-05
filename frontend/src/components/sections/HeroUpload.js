@@ -53,28 +53,28 @@ const HeroUpload = ({
     if (e.target.value === "0") {
       setData({
         name: "Face Verification",
-        url: "abcd",
+        url: "verify/",
         method: "POST",
         desc: " The Face Verification API provided by DeepFace uses a VGG-Face neural network model to extract facial features from input images. The extracted features are compared using cosine similarity to determine whether the two images contain the same person or not. The model has an accuracy of 99.38% on the Labeled Faces in the Wild (LFW) dataset. The response time for this API is typically around 1-2 seconds.This is a description of the Image Classification method.",
       });
     } else if (e.target.value === "1") {
       setData({
         name: "Object Detection",
-        url: "",
+        url: "age/",
         method: "POST",
         desc: "The Age Prediction API provided by DeepFace uses a Multi-Task Convolutional Neural Network (MTCNN) model to detect faces in input images and a Deep Expectation of Real and Apparent Age (DEX) model to predict the age of the person in the image. The DEX model has an accuracy of 80.37% on the Adience benchmark dataset. The response time for this API is typically around 1-2 seconds.The Age Prediction API can predict the age of a given face. This feature can be used in various applications such as marketing, advertising, or e-commerce, where demographic data can be used for targeted campaigns or personalized recommendations.This is a description of the Object Detection method.",
       });
     } else if (e.target.value === "2") {
       setData({
         name: "Image Segmentation",
-        url: "",
+        url: "gender/",
         method: "POST",
         desc: " The Gender Prediction API can predict the gender of a given face. This feature can be used in various applications such as market research, advertising, or social media analysis where demographic data can provide insights into consumer behavior.",
       });
     } else if (e.target.value === "3") {
       setData({
         name: "Image Captioning",
-        url: "",
+        url: "emotion/",
         method: "POST",
         desc: "This is a description of the Image Captioning method.",
       });
@@ -82,7 +82,7 @@ const HeroUpload = ({
     else if(e.target.value === '4'){
         setData({
             name: "Race Detection",
-            url: "",
+            url: "race/",
             method: "POST",
             desc: "The Race Prediction API can predict the race of a given face. This feature can be used in various applications such as demographic research, diversity and inclusion initiatives, or market analysis to better understand consumer behavior.",
         });
