@@ -8,11 +8,8 @@ import LayoutDefault from "./layouts/LayoutDefault";
 
 // Views
 import Home from "./views/Home";
-import Auth from "./views/Auth/Auth";
-import Main from "./views/Main";
-import Modal from "./components/elements/Modal";
 import Privacy from "./views/Privacy";
-import Pricing from "./views/Pricing";
+import UploadImage from "./views/UploadImage";
 
 const App = () => {
   const childRef = useRef();
@@ -38,6 +35,11 @@ const App = () => {
             <AppRoute
               path="/privacy"
               component={Privacy}
+              layout={LayoutDefault}
+            />
+            <AppRoute
+              path="/upload"
+              component={UploadImage}
               layout={LayoutDefault}
             />
           </Switch>

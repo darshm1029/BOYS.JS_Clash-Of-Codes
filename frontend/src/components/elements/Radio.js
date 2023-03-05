@@ -1,54 +1,29 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React from "react";
 
-const propTypes = {
-  children: PropTypes.node,
-  name: PropTypes.string.isRequired,
-  value: PropTypes.string,
-  disabled: PropTypes.bool,
-  checked: PropTypes.bool
-}
-
-const defaultProps = {
-  children: null,
-  name: undefined,
-  value: '',
-  disabled: false,
-  checked: false
-}
-
-const Radio = ({
-  className,
-  children,
-  name,
-  value,
-  disabled,
-  checked,
-  ...props
-}) => {
-
-  const classes = classNames(
-    'form-radio',
-    className
-  );
-
+function Radio({ name, value, checked, label, onChange = () => {} }) {
   return (
-    <label className={classes}>
+    <label
+      style={{
+        backgroundColor: checked ? "#4048d2" : "#25282c",
+        width: "100%",
+        borderRadius: "5px",
+        marginBottom: "10px",
+        textAlign: "left",
+        padding: "10px",
+        marginLeft: "20px",
+      }}
+    >
       <input
-        {...props}
         type="radio"
         name={name}
         value={value}
-        disabled={disabled}
         checked={checked}
+        onChange={onChange}
+        style={{ marginRight: "10px" }}
       />
-      {children}
+      {label}
     </label>
   );
 }
-
-Radio.propTypes = propTypes;
-Radio.defaultProps = defaultProps;
 
 export default Radio;
