@@ -24,10 +24,12 @@ from ML.views import (
     get_race,
     get_all,
     get_prediction_by_url,
+    get_gender_by_url,
+    verify_by_url,
     get_age_by_url,
     get_emotion_by_url,
-    get_gender_by_url,
     get_race_by_url,
+    get_all_by_url,
 )
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
@@ -56,11 +58,12 @@ urlpatterns = [
     path("race/", get_race),
     path("all/", get_all),
     path("v1/predict/", get_prediction_by_url),
+    path("v1/gender/", get_gender_by_url),
     path("v1/age/", get_age_by_url),
     path("v1/emotion/", get_emotion_by_url),
-    path("v1/gender/", get_gender_by_url),
     path("v1/race/", get_race_by_url),
-    # path('photos/', PhotoList.as_view()),
+    path("v1/verify/", verify_by_url),
+    path("v1/all/", get_all_by_url),
     re_path(
         r"^playground/$",
         schema_view.with_ui("swagger", cache_timeout=0),

@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from deepface import DeepFace
 
 # from .models import Img
-from .serializers import ImgSerializer
+from .serializers import ImgSerializer, VerifySerializer, UrlSerializer
 
 # from rest_framework.response import Response
 # from rest_framework import status
@@ -18,7 +18,9 @@ backends = ["opencv", "ssd", "dlib", "mtcnn", "retinaface", "mediapipe"]
 
 
 @csrf_exempt
+@swagger_auto_schema(methods=["post"], request_body=ImgSerializer)
 @api_view(["POST"])
+@parser_classes([MultiPartParser, FormParser])
 def get_prediction(request):
     img = request.FILES.get("image")
     file_name = default_storage.save("image.jpeg", img)
@@ -38,6 +40,7 @@ def get_prediction(request):
 
 
 @csrf_exempt
+@swagger_auto_schema(methods=["post"], request_body=UrlSerializer)
 @api_view(["POST"])
 def get_prediction_by_url(request):
     img = request.data.get("image")
@@ -84,6 +87,7 @@ def get_gender(request):
 
 
 @csrf_exempt
+@swagger_auto_schema(methods=["post"], request_body=UrlSerializer)
 @api_view(["POST"])
 def get_gender_by_url(request):
     img = request.data.get("image")
@@ -106,14 +110,19 @@ def get_gender_by_url(request):
 
 
 @csrf_exempt
+@swagger_auto_schema(methods=["post"], request_body=VerifySerializer)
 @api_view(["POST"])
+@parser_classes([MultiPartParser, FormParser])
 def verify(request):
     img1 = request.FILES.get("image1")
-    file_name1 = default_storage.save("image1.jpeg", img1)
+    urllib.request.urlretrieve(img1, "image1.jpeg")
     img2 = request.FILES.get("image2")
-    file_name2 = default_storage.save("image2.jpeg", img2)
+    urllib.request.urlretrieve(img2, "image.jpeg")
     result = DeepFace.verify(
-        file_name1, file_name2, distance_metric="euclidean_l2", model_name="Facenet512"
+        "image1.jpeg",
+        "image2.jpeg",
+        distance_metric="euclidean_l2",
+        model_name="Facenet512",
     )
     print(result)
     default_storage.delete("image1.jpeg")
@@ -122,7 +131,29 @@ def verify(request):
 
 
 @csrf_exempt
+# @swagger_auto_schema(methods=["post"], request_body=UrlSerializer)
 @api_view(["POST"])
+def verify_by_url(request):
+    img1 = request.data.get("image1")
+    urllib.request.urlretrieve(img1, "image1.jpeg")
+    img2 = request.data.get("image2")
+    urllib.request.urlretrieve(img2, "image2.jpeg")
+    result = DeepFace.verify(
+        "image1.jpeg",
+        "image2.jpeg",
+        distance_metric="euclidean_l2",
+        model_name="Facenet512",
+    )
+    print(result)
+    default_storage.delete("image1.jpeg")
+    default_storage.delete("image2.jpeg")
+    return JsonResponse({"result": bool(result["verified"])})
+
+
+@csrf_exempt
+@swagger_auto_schema(methods=["post"], request_body=ImgSerializer)
+@api_view(["POST"])
+@parser_classes([MultiPartParser, FormParser])
 def get_age(request):
     img = request.FILES.get("image")
     file_name = default_storage.save("image.jpeg", img)
@@ -144,6 +175,7 @@ def get_age(request):
 
 
 @csrf_exempt
+@swagger_auto_schema(methods=["post"], request_body=UrlSerializer)
 @api_view(["POST"])
 def get_age_by_url(request):
     img = request.data.get("image")
@@ -166,7 +198,9 @@ def get_age_by_url(request):
 
 
 @csrf_exempt
+@swagger_auto_schema(methods=["post"], request_body=ImgSerializer)
 @api_view(["POST"])
+@parser_classes([MultiPartParser, FormParser])
 def get_emotion(request):
     img = request.FILES.get("image")
     file_name = default_storage.save("image.jpeg", img)
@@ -188,6 +222,7 @@ def get_emotion(request):
 
 
 @csrf_exempt
+@swagger_auto_schema(methods=["post"], request_body=UrlSerializer)
 @api_view(["POST"])
 def get_emotion_by_url(request):
     img = request.data.get("image")
@@ -210,7 +245,9 @@ def get_emotion_by_url(request):
 
 
 @csrf_exempt
+@swagger_auto_schema(methods=["post"], request_body=ImgSerializer)
 @api_view(["POST"])
+@parser_classes([MultiPartParser, FormParser])
 def get_race(request):
     img = request.FILES.get("image")
     file_name = default_storage.save("image.jpeg", img)
@@ -232,6 +269,7 @@ def get_race(request):
 
 
 @csrf_exempt
+@swagger_auto_schema(methods=["post"], request_body=UrlSerializer)
 @api_view(["POST"])
 def get_race_by_url(request):
     img = request.data.get("image")
@@ -254,7 +292,9 @@ def get_race_by_url(request):
 
 
 @csrf_exempt
+@swagger_auto_schema(methods=["post"], request_body=ImgSerializer)
 @api_view(["POST"])
+@parser_classes([MultiPartParser, FormParser])
 def get_all(request):
     img = request.FILES.get("image")
     file_name = default_storage.save("image.jpeg", img)
@@ -285,6 +325,7 @@ def get_all(request):
 
 
 @csrf_exempt
+@swagger_auto_schema(methods=["post"], request_body=UrlSerializer)
 @api_view(["POST"])
 def get_all_by_url(request):
     img = request.data.get("image")
